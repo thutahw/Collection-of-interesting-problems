@@ -1,1 +1,4 @@
 test
+.vscode/
+cpp/out
+*.class
