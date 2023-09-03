@@ -3,3 +3,4 @@ test
 cpp/out
 *.class
 .vs/
+cpp/a.out
