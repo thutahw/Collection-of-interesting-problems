@@ -12,6 +12,8 @@ You have the following three operations permitted on a word:
     Delete a character
     Replace a character
 
+top-down DP approach
+
 O(l1)(l2)
 
 */
@@ -24,6 +26,8 @@ int minDistance(string word1, string word2) {
 
     vector<vector<int>> dp(l1 + 1, vector<int>(l2 + 1));
 
+
+    // base cases
     for (int i = 0; i <= l1; i++) {
         dp[i][0] = i;
     }
@@ -31,12 +35,14 @@ int minDistance(string word1, string word2) {
         dp[0][j] = j;
     }
 
+    // DP
     for (int i = 1; i <= l1; i++) {
         for (int j = 1; j <= l2; j++) {
             if (word1[i - 1] == word2[j - 1]) {
                 dp[i][j] = dp[i - 1][j - 1];
             } else {
                 dp[i][j] = min({dp[i - 1][j - 1], dp[i - 1][j], dp[i][j - 1]}) + 1;
+                                    // replace,   //delete       // insert
             }
         }
     }
